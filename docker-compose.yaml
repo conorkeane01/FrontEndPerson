@@ -1,0 +1,34 @@
+version: '3.8'
+services:
+  cicd-front-end:
+    image: node:14-alpine
+    build: ./cicd-front-end
+    container_name: cicd_front_end
+    working_dir: /app
+    ports:
+      - '3000:3000'   
+    volumes:
+      - ./cicd-front-end:/app
+    command: npm start  
+    stdin_open: true
+    tty: true
+    networks:
+      - my_network
+
+  create_person:
+    image: 59d5632fa397
+    container_name: 7d45be007a7c784032a6813ffb85f0c6fbea7741cf9850599c5d35b33f83c7e9
+    networks:
+      - my_network
+
+  delete_person:
+    image: efa4b07df8b5
+    container_name: 2eb09415e2f7a0db4a3be693255aa11f84be28629ecb59cc7157ef1ed3edbff9
+    networks:
+      - my_network    
+
+networks:
+      my_network:
+        driver: bridge    
+  
+    

@@ -2,6 +2,9 @@ import React, { useState } from 'react';
 import './App.css';
 import classes from './App.css';
 
+const apiURL = 'http://create_person:8081';
+const deleteURL = 'http://delete_person:8083'
+
 const App = () => {
     const [formData, setFormData] = useState({
         name: '',
@@ -12,6 +15,8 @@ const App = () => {
         position: '',
         department: '',
     });
+
+    
 
     const [deleteId, setDeleteId] = useState('');
     const handleDeletePerson = async () => {
@@ -45,7 +50,6 @@ const App = () => {
 
             if (response.ok) {
                 console.log('Person created successfully!');
-                setFormData();
             } else {
                 console.error('Error creating person:', response.statusText);
             }
