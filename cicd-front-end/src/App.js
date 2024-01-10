@@ -16,8 +16,6 @@ const App = () => {
         department: '',
     });
 
-    
-
     const [deleteId, setDeleteId] = useState('');
     const handleDeletePerson = async () => {
         try {
